@@ -2,6 +2,7 @@
 
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Log;
 
 class ConvertLocalFile extends Convert implements ConvertInterface {
 
@@ -10,6 +11,8 @@ class ConvertLocalFile extends Convert implements ConvertInterface {
 
 	function __construct($file, $converteroptions = null)
 	{
+
+        Log::debug(sprintf('ConvertLocalFile file: %s', $file));
 		parent::__construct($file, $converteroptions);
 		$this->setMethod(CloudConvert::INPUT_UPLOAD);
 		$this->setFilesystem();
@@ -18,7 +21,7 @@ class ConvertLocalFile extends Convert implements ConvertInterface {
 			$this->setFile($file->getPathname());
 			$this->setFormat($file->getClientOriginalExtension());
 		} else {
-
+            Log::debug(sprintf('ConvertLocalFile else statement: %s', $file));
 			$this->setFile($file);
 
 		}

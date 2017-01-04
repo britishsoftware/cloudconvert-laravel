@@ -14,6 +14,7 @@
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
+use Log;
 
 
 class CloudConvert
@@ -120,6 +121,8 @@ class CloudConvert
      */
     public function file($file)
     {
+        Log::debug(sprintf('File: %s', $file));
+
         $this->init($file);
         return $this;
     }
@@ -429,6 +432,7 @@ class CloudConvert
      */
     public function initFromLocalFile()
     {
+        Log::debug(sprintf('init from local file: %s', $this->resource));
         return $this->input = new ConvertLocalFile($this->resource);
     }
 

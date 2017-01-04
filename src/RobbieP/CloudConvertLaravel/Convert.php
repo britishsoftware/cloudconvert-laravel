@@ -1,5 +1,6 @@
 <?php namespace RobbieP\CloudConvertLaravel;
 
+use Log;
 
 abstract class Convert {
 
@@ -156,6 +157,7 @@ abstract class Convert {
 	public function setPath($path)
 	{
 		$this->path = str_replace('http:', '', rtrim($path, '/'));
+        Log::debug(sprintf('ConvertLocalFile set path: %s', $path));
 	}
 
 	/**
