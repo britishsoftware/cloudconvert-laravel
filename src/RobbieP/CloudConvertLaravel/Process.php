@@ -56,6 +56,7 @@ class Process {
      */
     protected function process($params = [], $endpoint = '', $method = 'post')
     {
+        Log::debug(sprintf('ConvertLocalFile converting file params: %s', print_r($params, true)));
         $this->checkURLisOK();
         $this->response = $this->http->{$method}($this->url . $endpoint, $params, $this->getQueryOptions());
         return $this->response ;
