@@ -394,8 +394,15 @@ class CloudConvert
      */
     public function init($resource = null)
     {
-        if (empty($this->resource) && !empty($resource))
+
+        Log::debug(sprintf('Resource passed to init: %s', $resource));
+
+        if (empty($this->resource) && !empty($resource)) {
             $this->resource = $resource;
+        }
+
+        Log::debug(sprintf('Resource passed to init: %s', $this->resource));
+        Log::debug(var_dump($this));
 
         switch (true) {
             case $this->isUrl():
@@ -614,10 +621,10 @@ class CloudConvert
             throw new Exception('Please set the file before converting');
         }
     }
-    
+
     /**
      * Wait till convertion is finished
-     * 
+     *
      * @return \RobbieP\CloudConvertLaravel\CloudConvert
      */
     public function wait($value = true)
