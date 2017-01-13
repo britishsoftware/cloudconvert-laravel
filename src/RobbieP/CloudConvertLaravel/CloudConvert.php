@@ -397,9 +397,11 @@ class CloudConvert
 
         Log::debug(sprintf('Resource passed to init: %s', $resource));
 
-        if (empty($this->resource) && !empty($resource)) {
-            $this->resource = $resource;
-        }
+        // if (empty($this->resource) && !empty($resource)) {
+        //     $this->resource = $resource;
+        // }
+
+        $this->resource = $resource;
 
         Log::debug(sprintf('Resource passed to init: %s', $this->resource));
         Log::debug(var_dump($this));
