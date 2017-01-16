@@ -1,5 +1,6 @@
 <?php namespace RobbieP\CloudConvertLaravel;
 
+use Log;
 use Exception;
 use InvalidArgumentException;
 
